@@ -1,5 +1,6 @@
 package com.example.vradonation;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -21,14 +22,16 @@ public class MainActivity extends AppCompatActivity {
         frameLayout = findViewById(R.id.mainFrame);
 
         loadingImage();
+        final ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-
+                actionBar.show();
             }
-        }, 300);
+        }, 3000);
     }
 
     private void loadingImage() {
