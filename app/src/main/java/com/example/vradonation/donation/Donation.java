@@ -41,24 +41,28 @@ public class Donation extends Fragment {
         String getTitle = bundle.getString("title");
         int n = bundle.getInt("array");
         donationTitle.setText(getTitle);
-        itemSpinner = view.findViewById(R.id.itemSpinner);
+
         switch (n) {
             case 0:
+                itemSpinner = view.findViewById(R.id.itemSpinner);
                 ArrayAdapter<CharSequence> foodAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.food_item, android.R.layout.simple_spinner_item);
                 foodAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 itemSpinner.setAdapter(foodAdapter);
                 break;
             case 1:
+                itemSpinner = view.findViewById(R.id.itemSpinner);
                 ArrayAdapter<CharSequence> clothAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.cloth_item, android.R.layout.simple_spinner_item);
                 clothAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 itemSpinner.setAdapter(clothAdapter);
                 break;
             case 2:
+                itemSpinner = view.findViewById(R.id.itemSpinner);
                 ArrayAdapter<CharSequence> medicineAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.medicine_item, android.R.layout.simple_spinner_item);
                 medicineAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 itemSpinner.setAdapter(medicineAdapter);
                 break;
             case 3:
+                itemSpinner = view.findViewById(R.id.itemSpinner);
                 ArrayAdapter<CharSequence> bookAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.book_item, android.R.layout.simple_spinner_item);
                 bookAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 itemSpinner.setAdapter(bookAdapter);

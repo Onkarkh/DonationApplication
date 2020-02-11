@@ -56,22 +56,22 @@ public class Home extends Fragment {
                     case 0:
                         title = "Food Donation";
                         bundle.putString("title",title);
-                        bundle.putInt("Array",0);
+                        bundle.putInt("Array",position);
                         break;
                     case 1:
                         title = "Cloth Donation";
                         bundle.putString("title",title);
-                        bundle.putInt("Array",1);
+                        bundle.putInt("Array",position);
                         break;
                     case 2:
                         title = "Medicine Donation";
                         bundle.putString("title",title);
-                        bundle.putInt("Array",2);
+                        bundle.putInt("Array",position);
                         break;
                     case 3:
                         title = "Books Donation";
                         bundle.putString("title",title);
-                        bundle.putInt("Array",3);
+                        bundle.putInt("Array",position);
                         break;
                 }
 
