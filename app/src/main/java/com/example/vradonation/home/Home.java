@@ -1,6 +1,7 @@
 package com.example.vradonation.home;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ import java.util.ArrayList;
 
 public class Home extends Fragment {
 
+    private static final String TAG = "Home";
     private ArrayList<String> title;
     private ArrayList<Integer> images;
 
@@ -51,27 +53,27 @@ public class Home extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Bundle bundle = new Bundle();
-                String title = null;
+                String title;
                 switch (position){
                     case 0:
                         title = "Food Donation";
                         bundle.putString("title",title);
-                        bundle.putInt("Array",position);
+                        bundle.putInt("array",R.array.food_item);
                         break;
                     case 1:
                         title = "Cloth Donation";
                         bundle.putString("title",title);
-                        bundle.putInt("Array",position);
+                        bundle.putInt("array",R.array.cloth_item);
                         break;
                     case 2:
                         title = "Medicine Donation";
                         bundle.putString("title",title);
-                        bundle.putInt("Array",position);
+                        bundle.putInt("array",R.array.medicine_item);
                         break;
                     case 3:
                         title = "Books Donation";
                         bundle.putString("title",title);
-                        bundle.putInt("Array",position);
+                        bundle.putInt("array",R.array.book_item);
                         break;
                 }
 
