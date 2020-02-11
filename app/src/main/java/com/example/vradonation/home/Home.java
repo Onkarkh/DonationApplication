@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.GridView;
@@ -15,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.vradonation.R;
+import com.example.vradonation.donation.Donation;
 
 import java.util.ArrayList;
 
@@ -44,6 +46,44 @@ public class Home extends Fragment {
         images.add(R.drawable.diary);
 
         gridView.setAdapter(new SetData());
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Bundle bundle = new Bundle();
+                String title = null;
+                switch (position){
+                    case 0:
+                        title = "Food Donation";
+                        bundle.putString("title",title);
+                        bundle.putInt("Array",0);
+                        break;
+                    case 1:
+                        title = "Cloth Donation";
+                        bundle.putString("title",title);
+                        bundle.putInt("Array",1);
+                        break;
+                    case 2:
+                        title = "Medicine Donation";
+                        bundle.putString("title",title);
+                        bundle.putInt("Array",2);
+                        break;
+                    case 3:
+                        title = "Books Donation";
+                        bundle.putString("title",title);
+                        bundle.putInt("Array",3);
+                        break;
+                }
+
+                Fragment donation = new Donation();
+                donation.setArguments(bundle);
+                getFragmentManager().beginTransaction().replace(R.id.mainFrame,donation).commit();
+            }
+        });
+
+
+
+
         return view;
     }
 
