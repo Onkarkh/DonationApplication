@@ -42,4 +42,10 @@ public class MainActivity extends AppCompatActivity {
         Fragment homePage = new Home();
         getSupportFragmentManager().beginTransaction().replace(R.id.mainFrame, homePage).commit();
     }
+
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+        loadHomeFragment();
+    }
 }
