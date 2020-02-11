@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.widget.FrameLayout;
 
+import com.example.vradonation.home.Home;
 import com.example.vradonation.loadingImage.LoadingImage;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,14 +23,12 @@ public class MainActivity extends AppCompatActivity {
         frameLayout = findViewById(R.id.mainFrame);
 
         loadingImage();
-        final ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
 
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                actionBar.show();
+                loadHomeFragment();
             }
         }, 3000);
     }
@@ -37,5 +36,10 @@ public class MainActivity extends AppCompatActivity {
     private void loadingImage() {
         Fragment loadingImage = new LoadingImage();
         getSupportFragmentManager().beginTransaction().replace(R.id.mainFrame, loadingImage).commit();
+    }
+
+    private void loadHomeFragment() {
+        Fragment homePage = new Home();
+        getSupportFragmentManager().beginTransaction().replace(R.id.mainFrame, homePage).commit();
     }
 }
