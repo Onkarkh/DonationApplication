@@ -57,14 +57,8 @@ public class Donation extends Fragment {
             public void onClick(View v) {
                 getData();
                 Boolean status = checkValidation();
-                if (status) {
-                    sendData();
-                    Fragment sendData = new Fragment();
-                    sendData.setArguments(bundle);
-                    getFragmentManager().beginTransaction().replace(R.id.mainFrame,sendData).commit();
-                } else {
-                    toastMessage("Error in Processing!");
-                }
+                SendData sendData = new SendData(getActivity());
+                sendData.execute(firstName, lastName, email, mobile, address, qyt, type, other);
             }
         });
 
@@ -72,15 +66,7 @@ public class Donation extends Fragment {
     }
 
     private void sendData() {
-        bundle = new Bundle();
-        bundle.putString("firstName", firstName);
-        bundle.putString("lastName", lastName);
-        bundle.putString("email", email);
-        bundle.putString("mobile", mobile);
-        bundle.putString("address", address);
-        bundle.putString("type", type);
-        bundle.putString("other", other);
-        bundle.putString("quantity", qyt);
+
     }
 
     private Boolean checkValidation() {
@@ -102,8 +88,11 @@ public class Donation extends Fragment {
         email = edtEmail.getText().toString().trim();
         mobile = edtMobile.getText().toString().trim();
         address = edtAddress.getText().toString().trim();
-        other = edtOther.getText().toString().trim();
         qyt = edtQuantity.getText().toString().trim();
         type = itemSpinner.getSelectedItem().toString().trim();
+        other = edtOther.getText().toString().trim();
+        if (other.matches("")) {
+            other = "none";
+        }
     }
 }
