@@ -25,6 +25,8 @@ public class Donation extends Fragment {
     private String firstName, lastName, email, mobile, address, qyt, other, type;
     private Button btnRegister;
 
+    private Bundle bundle;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -42,9 +44,9 @@ public class Donation extends Fragment {
 
         btnRegister = view.findViewById(R.id.register);
 
-        Bundle bundle = getArguments();
-        final String getTitle = bundle.getString("title");
-        int array = bundle.getInt("array");
+        Bundle getbundle = getArguments();
+        final String getTitle = getbundle.getString("title");
+        int array = getbundle.getInt("array");
 
         donationTitle.setText(getTitle);
 
@@ -58,8 +60,11 @@ public class Donation extends Fragment {
             public void onClick(View v) {
                 getData();
                 Boolean status = checkValidation();
-                if(status){
-                    toastMessage("Success!");
+                if (status) {
+                    sendData();
+                    Fragment sendData = new Fragment();
+                    sendData.setArguments(bundle);
+                    getFragmentManager().beginTransaction().replace(R.id.mainFrame,sendData).commit();
                 } else {
                     toastMessage("Error in Processing!");
                 }
@@ -69,8 +74,20 @@ public class Donation extends Fragment {
         return view;
     }
 
+    private void sendData() {
+        bundle = new Bundle();
+        bundle.putString("firstName", firstName);
+        bundle.putString("lastName", lastName);
+        bundle.putString("email", email);
+        bundle.putString("mobile", mobile);
+        bundle.putString("address", address);
+        bundle.putString("type", type);
+        bundle.putString("other", other);
+        bundle.putString("quantity", qyt);
+    }
+
     private Boolean checkValidation() {
-        if(firstName.matches("")||lastName.matches("")||email.matches("")||mobile.matches("")||address.matches("")||qyt.matches("")){
+        if (firstName.matches("") || lastName.matches("") || email.matches("") || mobile.matches("") || address.matches("") || qyt.matches("")) {
             toastMessage("Please Check all the fields are Entered!");
             return false;
         } else {
@@ -79,10 +96,10 @@ public class Donation extends Fragment {
     }
 
     private void toastMessage(String s) {
-        Toast.makeText(getActivity(), ""+s, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "" + s, Toast.LENGTH_SHORT).show();
     }
 
-    private void getData(){
+    private void getData() {
         firstName = edtFirstName.getText().toString().trim();
         lastName = edtLastName.getText().toString().trim();
         email = edtEmail.getText().toString().trim();
