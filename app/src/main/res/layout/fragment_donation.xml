@@ -142,7 +142,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/book_donate"
+            android:id="@+id/register"
             style="@style/PartyFundButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
