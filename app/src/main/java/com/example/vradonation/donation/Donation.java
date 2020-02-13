@@ -5,9 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,6 +23,7 @@ public class Donation extends Fragment {
     private TextView donationTitle;
     private EditText edtFirstName, edtLastName, edtEmail, edtMobile, edtAddress, edtOther, edtQuantity;
     private String firstName, lastName, email, mobile, address, qyt, other, type;
+    private Button btnRegister;
 
     @Nullable
     @Override
@@ -37,10 +40,11 @@ public class Donation extends Fragment {
         edtOther = view.findViewById(R.id.otherItem);
         edtQuantity = view.findViewById(R.id.quantity);
 
-        Bundle bundle = getArguments();
-        String getTitle = bundle.getString("title");
-        int array = bundle.getInt("array");
+        btnRegister = view.findViewById(R.id.register);
 
+        Bundle bundle = getArguments();
+        final String getTitle = bundle.getString("title");
+        int array = bundle.getInt("array");
 
         donationTitle.setText(getTitle);
 
@@ -49,6 +53,43 @@ public class Donation extends Fragment {
         foodAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         itemSpinner.setAdapter(foodAdapter);
 
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getData();
+                Boolean status = checkValidation();
+                if(status){
+                    toastMessage("Success!");
+                } else {
+                    toastMessage("Error in Processing!");
+                }
+            }
+        });
+
         return view;
+    }
+
+    private Boolean checkValidation() {
+        if(firstName.matches("")||lastName.matches("")||email.matches("")||mobile.matches("")||address.matches("")||qyt.matches("")){
+            toastMessage("Please Check all the fields are Entered!");
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    private void toastMessage(String s) {
+        Toast.makeText(getActivity(), ""+s, Toast.LENGTH_SHORT).show();
+    }
+
+    private void getData(){
+        firstName = edtFirstName.getText().toString().trim();
+        lastName = edtLastName.getText().toString().trim();
+        email = edtEmail.getText().toString().trim();
+        mobile = edtMobile.getText().toString().trim();
+        address = edtAddress.getText().toString().trim();
+        other = edtOther.getText().toString().trim();
+        qyt = edtQuantity.getText().toString().trim();
+        type = itemSpinner.getSelectedItem().toString().trim();
     }
 }

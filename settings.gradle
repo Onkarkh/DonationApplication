@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':jdbc'
 rootProject.name='VraDonation'
