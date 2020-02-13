@@ -20,9 +20,9 @@ import com.example.vradonation.R;
 public class Donation extends Fragment {
 
     private String firstName, lastName, email, mobile, address, qyt, other, type;
-    private Button btnRegister;
-
+    private EditText edtFirstName, edtLastName, edtEmail, edtMobile, edtAddress, edtOther, edtQuantity;
     private Bundle bundle;
+    private Spinner itemSpinner;
 
     @Nullable
     @Override
@@ -31,15 +31,15 @@ public class Donation extends Fragment {
 
         TextView donationTitle = view.findViewById(R.id.donationTitle);
 
-        EditText edtFirstName = view.findViewById(R.id.firstName);
-        EditText edtLastName = view.findViewById(R.id.lastName);
-        EditText edtEmail = view.findViewById(R.id.email);
-        EditText edtMobile = view.findViewById(R.id.mobileNumber);
-        EditText edtAddress = view.findViewById(R.id.address);
-        EditText edtOther = view.findViewById(R.id.otherItem);
-        EditText edtQuantity = view.findViewById(R.id.quantity);
+        edtFirstName = view.findViewById(R.id.firstName);
+        edtLastName = view.findViewById(R.id.lastName);
+        edtEmail = view.findViewById(R.id.email);
+        edtMobile = view.findViewById(R.id.mobileNumber);
+        edtAddress = view.findViewById(R.id.address);
+        edtOther = view.findViewById(R.id.otherItem);
+        edtQuantity = view.findViewById(R.id.quantity);
 
-        btnRegister = view.findViewById(R.id.register);
+        Button btnRegister = view.findViewById(R.id.register);
 
         Bundle getbundle = getArguments();
         final String getTitle = getbundle.getString("title");
@@ -47,7 +47,7 @@ public class Donation extends Fragment {
 
         donationTitle.setText(getTitle);
 
-        Spinner itemSpinner = view.findViewById(R.id.itemSpinner);
+        itemSpinner = view.findViewById(R.id.itemSpinner);
         ArrayAdapter<CharSequence> foodAdapter = ArrayAdapter.createFromResource(getActivity(), array, android.R.layout.simple_spinner_item);
         foodAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         itemSpinner.setAdapter(foodAdapter);
