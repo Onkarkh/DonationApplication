@@ -10,18 +10,9 @@ $quantity = $_POST["quantity"];
 $type = $_POST["type"];
 $other = $_POST["other"];
 
-//$firstName = "Onkar";
-//$lastName = "Khaladkar";
-//$email = "Onkar@gmail.com";
-//$mobile = "8888238998";
-//$address = "Kothrud";
-//$quantity = "Quantity";
-//$type = "Rice";
-//$other = "NUL11L";
-
 $sql = "INSERT INTO donation_database (firstname,lastname,email,mobile,address,quantity,type,other) VALUES ('$firstName','$lastName','$email','$mobile','$address','$quantity','$type','$other')";
 if(mysqli_query($conn,$sql)){
-echo "New record created successfully !";
+echo "Thank you! We will contact you shortly.";
 } else {
 	echo "Error: " . $sql . " " . mysqli_error($conn);
 }

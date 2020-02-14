@@ -21,7 +21,6 @@ public class Donation extends Fragment {
 
     private String firstName, lastName, email, mobile, address, qyt, other, type;
     private EditText edtFirstName, edtLastName, edtEmail, edtMobile, edtAddress, edtOther, edtQuantity;
-    private Bundle bundle;
     private Spinner itemSpinner;
 
     @Nullable
@@ -41,9 +40,9 @@ public class Donation extends Fragment {
 
         Button btnRegister = view.findViewById(R.id.register);
 
-        Bundle getbundle = getArguments();
-        final String getTitle = getbundle.getString("title");
-        int array = getbundle.getInt("array");
+        Bundle bundle = getArguments();
+        final String getTitle = bundle.getString("title");
+        int array = bundle.getInt("array");
 
         donationTitle.setText(getTitle);
 
@@ -57,16 +56,14 @@ public class Donation extends Fragment {
             public void onClick(View v) {
                 getData();
                 Boolean status = checkValidation();
-                SendData sendData = new SendData(getActivity());
-                sendData.execute(firstName, lastName, email, mobile, address, qyt, type, other);
+                if (status) {
+                    SendData sendData = new SendData(getActivity());
+                    sendData.execute(firstName, lastName, email, mobile, address, qyt, type, other);
+                }
             }
         });
 
         return view;
-    }
-
-    private void sendData() {
-
     }
 
     private Boolean checkValidation() {
