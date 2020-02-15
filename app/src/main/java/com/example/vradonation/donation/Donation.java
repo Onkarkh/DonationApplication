@@ -80,14 +80,14 @@ public class Donation extends Fragment {
     }
 
     private void getData() {
-        firstName = edtFirstName.getText().toString().trim();
-        lastName = edtLastName.getText().toString().trim();
-        email = edtEmail.getText().toString().trim();
-        mobile = edtMobile.getText().toString().trim();
-        address = edtAddress.getText().toString().trim();
-        qyt = edtQuantity.getText().toString().trim();
-        type = itemSpinner.getSelectedItem().toString().trim();
-        other = edtOther.getText().toString().trim();
+        firstName = edtFirstName.getText().toString().trim().toLowerCase();
+        lastName = edtLastName.getText().toString().trim().toLowerCase();
+        email = edtEmail.getText().toString().trim().toLowerCase();
+        mobile = edtMobile.getText().toString().trim().toLowerCase();
+        address = edtAddress.getText().toString().trim().toLowerCase();
+        qyt = edtQuantity.getText().toString().trim().toLowerCase();
+        type = itemSpinner.getSelectedItem().toString().trim().toLowerCase();
+        other = edtOther.getText().toString().trim().toLowerCase();
         if (other.matches("")) {
             other = "none";
         }

@@ -3,6 +3,7 @@ package com.example.vradonation.donation;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.widget.ProgressBar;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -17,8 +18,11 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 public class SendData extends AsyncTask<String, Void, String> {
+
     Context context;
     AlertDialog alertDialog;
+
+    ProgressBar progressBar;
 
     public SendData(Context context) {
         this.context = context;
