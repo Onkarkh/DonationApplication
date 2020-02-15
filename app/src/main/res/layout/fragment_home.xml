@@ -31,7 +31,7 @@
         style="@style/PartyFundButton"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="@string/party_funds"/>
+        android:text="@string/party_funds" />
 
     <GridView
         android:id="@+id/donationGridView"
