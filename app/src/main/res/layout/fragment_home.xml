@@ -33,6 +33,15 @@
         android:layout_height="60dp"
         android:text="@string/party_funds" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Item Donation"
+        android:gravity="center"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
     <GridView
         android:id="@+id/donationGridView"
         android:layout_width="match_parent"

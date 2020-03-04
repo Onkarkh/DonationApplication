@@ -30,7 +30,7 @@ public class SendData extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... params) {
-        String insertUrl = "http://192.168.0.127/test/insert.php";
+        String insertUrl = "http://192.168.0.112/test/insert.php";
         try {
             String firstName = params[0];
             String lastName = params[1];
