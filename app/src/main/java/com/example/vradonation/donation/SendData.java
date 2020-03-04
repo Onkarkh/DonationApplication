@@ -81,7 +81,7 @@ public class SendData extends AsyncTask<String, Void, String> {
     @Override
     protected void onPreExecute() {
         alertDialog = new AlertDialog.Builder(context).create();
-        alertDialog.setTitle("Insert Status");
+        alertDialog.setTitle("Vidarbha Rajya Aghadi");
     }
 
     @Override
